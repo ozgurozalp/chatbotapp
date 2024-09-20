@@ -72,7 +72,7 @@ export default function ChatScreen() {
           inset: "auto",
           left: "50%",
           bottom: 0,
-          transform: "translateX(-50%)",
+          transform: "translate(-50%, 0)",
         },
         {
           ease: "linear",
