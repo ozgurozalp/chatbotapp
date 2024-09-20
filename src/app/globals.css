@@ -63,6 +63,15 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: #18181a;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
+}
+
+textarea {
+  field-sizing: content;
+  max-height: 200px;
+  max-height: 10lh;
 }
