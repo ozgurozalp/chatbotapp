@@ -68,11 +68,7 @@ export default function ChatScreen() {
     if (conversation.length > 0) {
       animate(
         scope.current,
-        {
-          left: "50%",
-          bottom: 0,
-          transform: "translate(-50%, 0)",
-        },
+        { y: 0 },
         {
           ease: "linear",
           onComplete() {
@@ -83,27 +79,26 @@ export default function ChatScreen() {
     }
   }, [conversation]);
 
+  const halfHeight = window.innerHeight / 2;
+
   return (
     <div className="h-dvh flex flex-col gap-4">
       <div
         ref={scrollRef}
         className="py-4 flex-1 overflow-auto px-6 sm:px-0"
-        style={{ maxHeight: "calc(100dvh - 98px)" }}
+        style={{ maxHeight: "calc(100dvh - 90px)" }}
       >
         <Messages ref={messagesRef} messages={conversation} />
         <div className="w-full h-px" ref={visibilityRef} />
       </div>
       <m.div
         initial={{
-          position: "fixed",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
+          y: (halfHeight - 90 / 2) * -1,
         }}
         ref={scope}
         className={cn(
           hasBottomRadius ? "rounded-xl" : "rounded-t-xl",
-          "bg-black mt-auto p-6 h-fit max-w-3xl w-full",
+          "bg-black transition mt-auto p-6 h-fit max-w-3xl w-full",
         )}
       >
         <form
