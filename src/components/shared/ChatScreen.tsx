@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { readStreamableValue } from "ai/rsc";
-import { continueConversation, Message } from "@/app/actions";
+import { continueConversation, Message } from "@/actions";
 import Messages from "@/components/shared/Messages";
 import { useScrollAnchor } from "@/lib/hooks";
 

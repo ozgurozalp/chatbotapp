@@ -1,4 +1,4 @@
-import { Message } from "@/app/actions";
+import { Message } from "@/actions";
 import { Bot, User } from "lucide-react";
 import { forwardRef } from "react";
 
