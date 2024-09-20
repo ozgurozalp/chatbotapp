@@ -7,10 +7,10 @@ interface Props {
   messages: Message[];
 }
 
-const Messages = forwardRef<HTMLDivElement, Props>(({ messages }, ref) => {
+const Messages = forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
     <div ref={ref} className="flex flex-col gap-2">
-      {messages.map((message, index) => (
+      {(props?.messages ?? []).map((message, index) => (
         <div
           className="text-white items-center flex gap-2 border-b border-[#27272a] pb-2 last:border-none last:pb-0"
           key={index}
