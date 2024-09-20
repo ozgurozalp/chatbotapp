@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import ChatScreen from "@/components/shared/ChatScreen";
 
 export default function Home() {
   return (
-    <div className="text-5xl">
-      <Button />
+    <div className="max-w-3xl mx-auto">
+      <ChatScreen />
     </div>
   );
 }
