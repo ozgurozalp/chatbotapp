@@ -86,8 +86,14 @@ export default function ChatScreen() {
             className="bg-transparent border-none text-white resize-none self-center"
           />
           <div className="self-end p-1">
-            <Button disabled={loading} type="submit" size="icon">
-              <Send />
+            <Button
+              variant="secondary"
+              disabled={loading}
+              className="rounded"
+              type="submit"
+              size="icon-xs"
+            >
+              <Send className="size-4" />
             </Button>
           </div>
         </form>
