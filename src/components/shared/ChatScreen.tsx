@@ -69,7 +69,6 @@ export default function ChatScreen() {
       animate(
         scope.current,
         {
-          inset: "auto",
           left: "50%",
           bottom: 0,
           transform: "translate(-50%, 0)",
