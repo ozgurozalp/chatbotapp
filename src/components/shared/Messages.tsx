@@ -1,6 +1,5 @@
 import { Message } from "@/app/actions";
 import { Bot, User } from "lucide-react";
-import * as React from "react";
 import { forwardRef } from "react";
 
 interface Props {

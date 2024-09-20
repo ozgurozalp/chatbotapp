@@ -2,7 +2,6 @@
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
-import * as React from "react";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { readStreamableValue } from "ai/rsc";
 import { continueConversation, Message } from "@/app/actions";
