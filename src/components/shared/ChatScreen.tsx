@@ -67,7 +67,7 @@ export default function ChatScreen() {
     <div className="h-dvh flex flex-col gap-4">
       <div
         ref={scrollRef}
-        className="py-4 flex-1 overflow-auto"
+        className="py-4 flex-1 overflow-auto px-6 sm:px-0"
         style={{ maxHeight: "calc(100dvh - 98px)" }}
       >
         <Messages ref={messagesRef} messages={conversation} />
