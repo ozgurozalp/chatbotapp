@@ -7,12 +7,16 @@ import { readStreamableValue } from "ai/rsc";
 import { continueConversation, Message } from "@/actions";
 import Messages from "@/components/shared/Messages";
 import { useScrollAnchor } from "@/lib/hooks";
+import { useAnimate, m } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export default function ChatScreen() {
+  const [scope, animate] = useAnimate();
   const [conversation, setConversation] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
   const textarea = useRef<HTMLTextAreaElement>(null);
   const [loading, setLoading] = useState(false);
+  const [hasBottomRadius, setHasBottomRadius] = useState(true);
   const { messagesRef, scrollRef, visibilityRef, scrollToBottom } =
     useScrollAnchor();
 
@@ -34,7 +38,7 @@ export default function ChatScreen() {
   }
 
   async function submit() {
-    if (loading) return;
+    if (loading || input.trim().length === 0) return;
 
     clearInput();
     setLoading(true);
@@ -60,6 +64,24 @@ export default function ChatScreen() {
 
   useEffect(() => {
     scrollToBottom();
+
+    if (conversation.length > 0) {
+      animate(
+        scope.current,
+        {
+          inset: "auto",
+          left: "50%",
+          bottom: 0,
+          transform: "translateX(-50%)",
+        },
+        {
+          ease: "linear",
+          onComplete() {
+            setHasBottomRadius(false);
+          },
+        },
+      );
+    }
   }, [conversation]);
 
   return (
@@ -72,7 +94,19 @@ export default function ChatScreen() {
         <Messages ref={messagesRef} messages={conversation} />
         <div className="w-full h-px" ref={visibilityRef} />
       </div>
-      <div className="bg-black mt-auto p-6 h-fit rounded-t-xl">
+      <m.div
+        initial={{
+          position: "fixed",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+        ref={scope}
+        className={cn(
+          hasBottomRadius ? "rounded-xl" : "rounded-t-xl",
+          "bg-black mt-auto p-6 h-fit max-w-3xl w-full",
+        )}
+      >
         <form
           onSubmit={formOnSubmit}
           className="h-fit bg-[#18181a] border border-[#27272a] grid grid-cols-[1fr_auto] gap-2 rounded-md"
@@ -82,7 +116,7 @@ export default function ChatScreen() {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             onKeyDown={onKeyDown}
-            placeholder={loading ? "Responding..." : "Send a message"}
+            placeholder={loading ? "Responding..." : "Type a message"}
             className="bg-transparent border-none text-white resize-none self-center"
           />
           <div className="self-end p-1">
@@ -97,7 +131,7 @@ export default function ChatScreen() {
             </Button>
           </div>
         </form>
-      </div>
+      </m.div>
     </div>
   );
 }
