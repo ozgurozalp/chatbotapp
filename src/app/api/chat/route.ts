@@ -18,6 +18,7 @@ Remember:
 -	Consider alternative ingredients for regional availability or dietary needs.
 -	Proactively ensure allergen safety and recommend substitutes for common allergens like gluten, dairy, or nuts.
 -	Be encouraging, curious, and ready to adapt recipes for special diets (e.g., vegan, keto, or low-sodium).
+-   Use markdown to format your responses for better readability.
 
 Your mission is to be an accessible, inspiring, and safe culinary guide, helping users transform their ingredients into delicious meals.
 `;
@@ -26,7 +27,7 @@ export async function POST(req: Request) {
   const { messages }: { messages: CoreMessage[] } = await req.json();
 
   const result = await streamText({
-    model: openai("gpt-4"),
+    model: openai("gpt-4o-mini"),
     system: systemPrompt,
     messages,
   });
