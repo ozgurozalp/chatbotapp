@@ -27,7 +27,7 @@ export default function ChatScreen() {
           "transition mt-auto p-6 h-fit max-w-3xl w-full",
         )}
       >
-        <div className="h-fit border border grid grid-cols-[1fr_auto] gap-2 rounded-md">
+        <div className="h-fit border grid grid-cols-[1fr_auto] gap-2 rounded-md">
           <input
             value={input}
             onChange={(event) => {
