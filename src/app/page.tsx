@@ -1,10 +1,4 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-const ChatScreen = dynamic(() => import("@/components/shared/ChatScreen"), {
-  ssr: false,
-});
+import ChatScreen from "@/components/shared/ChatScreen";
 
 export default function Home() {
   return (

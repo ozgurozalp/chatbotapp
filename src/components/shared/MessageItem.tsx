@@ -1,5 +1,5 @@
 import { Bot, User } from "lucide-react";
-import { Message } from "@/actions";
+import { Message } from "ai";
 
 export default function MessageItem({ message }: { message: Message }) {
   const Icon = message.role === "user" ? User : Bot;

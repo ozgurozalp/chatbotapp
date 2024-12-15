@@ -1,6 +1,6 @@
-import { Message } from "@/actions";
 import { forwardRef } from "react";
 import MessageItem from "@/components/shared/MessageItem";
+import { Message } from "ai";
 
 interface Props {
   messages: Message[];
